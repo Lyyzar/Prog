@@ -3,31 +3,32 @@
 struct Person{
 
 	private:
-		string first_name;
-		string last_name;
-		int age;
+		string first;
+		string last;
+		int agee;
 	public:
-		Person(first_name,last_name,age);
-		int get_age() const {return age;}
-		string get_first_name() const {return first_name;}
-		string get_last_name() const {return last_name;}
+		Person () { };
+		Person(string firstname,string lastname,int age);
+		int age() const {return agee;}
+		string first_name() const {return first;}
+		string last_name() const {return last;}
 };
 
-ostream& operator<<(ostream& os,Person& p){
 
-	return os<< p.first_name << " "<<p.last_name<<" "<<p.age<<endl;
-}
+Person::Person(string fn,string ln,int aa) : first{fn}, last{ln}, agee{aa}
+{
 
-istream& operator>>(istream& is, Person& p){
+	if(aa<1 || aa>150)
+		error("Invalid age!");
 
-	is>>p.get_first_name()>>p.get_last_name()>>p.get_age();
-	if(p.get_age()<0 || p.get_age()>150) error("Invalid age!");
-	
-	/*switch(...)
+	string fulname=fn + ln;
+	for(char c : fulname){
+
+switch(c){
 	case ';':
 	case ':':
 	case '"':
-	case ''':
+	//case ''':
 	case '[':
 	case ']':
 	case '*':
@@ -39,19 +40,49 @@ istream& operator>>(istream& is, Person& p){
 	case '@':
 	case '!':
 	case '.':
-	*/
-	return is;
-
+		error("Bad character in name!");
+			break;
+	default:
+			break;
+		}
 }
+}
+
+
+
+ostream& operator<<(ostream& os,Person& p){
+
+	return os<< p.first_name() << " "<<p.last_name()<<" "<<p.age()<<endl;
+}
+
+istream& operator>>(istream& is, Person& p){
+
+	string f,l;
+	int a;
+
+	
+	is>>f>>l>>a;
+	p=Person(f,l,a);
+	if(f==" " || l==" ") error("First or Last name is missing!");
+	return is;
+	}
+	
+
+
 
 int main ()
 try{
 
-	
-	Person c;
-	cin>>c;
-	cout <<c;
+	vector<Person> vp;
+	Person p;
+	while(cin>>p)
+	{
+		if(p.first_name()=="end") break;
+			else vp.push_back(p);
+	}
 
+	for (Person p : vp)
+		cout << p <<endl;
 
 
 
