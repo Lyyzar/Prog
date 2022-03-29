@@ -5,7 +5,9 @@ template<typename T>
 
 struct S {
 
-private: T val;
+private: 
+	
+	T val;
 
 public: 
 
@@ -41,6 +43,25 @@ template<typename T>
 		{
 			cin>>v;
 		}
+
+template<typename T>
+ostream& operator<<(ostream& os, S<vector<T>>& s)
+{
+	cout<<"{";
+	for(int i=0;i<=s.size();++i)
+		{
+		
+			if(i<s.size()) cout<<", ";
+				else cout <<"}"<<endl;
+		
+		}	
+	
+	
+	return os;
+	
+}
+
+
 
 int main()
 {
