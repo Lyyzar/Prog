@@ -5,17 +5,15 @@ template<typename T>
 
 struct S {
 
-private: 
-	
-	T val;
-
-public: 
-
-	S(T vv=0) : val{vv} { }
+	explicit S(T vv=0) : val{vv} { }
 	S& operator=(const T& s);
 	T& get();
 	const T& get() const;
 
+
+private: 
+	
+	T val;
 };
 template<typename T>
 T& S<T>::get(){
@@ -25,7 +23,8 @@ T& S<T>::get(){
 } 
 
 template<typename T>
-const T& S<T>::get() const{
+const T& S<T>::get() const
+{
 
 	return val;
 
@@ -33,7 +32,7 @@ const T& S<T>::get() const{
 template<typename T>
 S<T>& S<T>::operator=(const T& s)
 		{
-			val=s;
+			val = s;
 			return *this;
 		}
 
@@ -41,27 +40,22 @@ S<T>& S<T>::operator=(const T& s)
 template<typename T>
 	void read_val(T& v)
 		{
-			cin>>v;
+			cin >> v;
 		}
 
 template<typename T>
-ostream& operator<<(ostream& os, S<vector<T>>& s)
+std::ostream& operator<<(ostream& os, vector<T>& v)
 {
-	cout<<"{";
-	for(int i=0;i<=s.size();++i)
-		{
-		
-			if(i<s.size()) cout<<", ";
-				else cout <<"}"<<endl;
-		
-		}	
-	
-	
-	return os;
-	
+    os << "{ ";
+    for (int i = 0; i < v.size(); ++i) {
+        os << v[i];
+        if(i < v.size() - 1) cout<< ", ";
+        	else cout<<" ";
+    }
+    os << "}\n";
+
+    return os;
 }
-
-
 
 int main()
 {
@@ -70,13 +64,16 @@ int main()
 	S<char> sc {'c'};
 	S<double> sd {32.5};
 	S<string> ss {"Example"};
-	//S<vector<int>> sv {1,2,3,4,5,6};
+	S<vector<int>> sv { vector<int>{1, 2, 3, 4, 5, 6}};
 
 	cout << "S<int>: " << si.get()<<endl;
 	cout << "S<char>: " << sc.get()<<endl;
 	cout << "S<double>: " << sd.get()<<endl;
 	cout << "S<string>: " << ss.get()<<endl;
-	//cout << "S<vector<int>>: " << sv.get()<<endl;
+	cout << "S<vector<int>>: " << sv.get()<<endl;
+
+	
+
 
 	si=14;
 	sc='k';
