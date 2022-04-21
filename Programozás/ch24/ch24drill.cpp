@@ -26,5 +26,9 @@ int main(){
 	cout<<"Size of c: "<< sizeof(c)<<endl;
 	cout<<"Size of d: "<< sizeof(d)<<endl;
 	cout<<"Size of e: "<< sizeof(e)<<endl;
+
+	cout << a.size() << endl << b.size() << endl
+	<< c.size() << endl << d.size() << endl
+	<< e.size() << endl;
 	return 0;
 }
