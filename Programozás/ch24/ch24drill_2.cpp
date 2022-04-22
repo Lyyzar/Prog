@@ -1,5 +1,6 @@
 #include "std_lib_facilities.h"
 #include "Matrix.h"
+#include <complex>
 
 using namespace Numeric_lib;
 
@@ -39,7 +40,20 @@ int main(){
 			cout<<endl;
 	}
 
-	
+	cout<<"Enter 10 complex numbers: "<<endl;
+	Matrix<complex<double>> comp(10);
+	for(int i=0;i<10;++i)
+		{
+			cin>>comp(i);
+		}
+	complex<double> sum=0;
+	for(int i=0;i<10;++i)
+		{
+			sum+=comp(i);
+		}
+
+		cout<<"The sum of the complex Matrix elements: "<<sum<<endl;
+
 
 	Matrix<int,2> mat(2,3);
 	for(int i=0;i<2;++i)
@@ -58,5 +72,7 @@ int main(){
 		}
 		cout << endl;
 	}
+
+
 	return 0;
 }
