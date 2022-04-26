@@ -15,7 +15,6 @@ Iter2 my_copy(Iter1 f1,Iter1 e1,Iter2 f2)
 	for(Iter1 p=f1;p!=e1;++p)
 		{
 			*f2=*p;
-			++p;
 			++f2;
 			return f2;
 
