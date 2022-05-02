@@ -63,7 +63,7 @@ istream& operator>>(istream& is, Person& p){
 	
 	is>>f>>l>>a;
 	p=Person(f,l,a);
-	if(f==" " || l==" ") error("First or Last name is missing!");
+	if(f=="" || l=="") error("First or Last name is missing!");
 	return is;
 	}
 	
@@ -81,8 +81,8 @@ try{
 			else vp.push_back(p);
 	}
 
-	for (Person p : vp)
-		cout << p <<endl;
+	for (Person k : vp)
+		cout << k <<endl;
 
 
 
