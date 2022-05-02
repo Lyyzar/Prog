@@ -6,7 +6,7 @@ template<typename T>
 struct S {
 
 	explicit S(T vv=0) : val{vv} { }
-	S& operator=(const T& s);
+	S<T>& operator=(const T& s);
 	T& get();
 	const T& get() const;
 
@@ -50,7 +50,7 @@ std::ostream& operator<<(ostream& os, vector<T>& v)
     for (int i = 0; i < v.size(); ++i) {
         os << v[i];
         if(i < v.size() - 1) cout<< ", ";
-        	else cout<<" ";
+        	else cout<<"";
     }
     os << "}\n";
 
